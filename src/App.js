@@ -1,5 +1,5 @@
 import './App.css';
-import { Main } from './pages';
+import { Main, SignUp } from './pages';
 
 function App() {
   return (
@@ -7,6 +7,7 @@ function App() {
       <header className="App-header">
         <h1>Welcome to Wall App</h1>
         <Main />
+        <SignUp />
       </header>
     </div>
   );
