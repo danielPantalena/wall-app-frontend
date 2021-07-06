@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Post } from '../../components';
 import wallAppApi from '../../services/api';
 
-const PostsList = () => {
+const PostsList = ({ isLoggedIn }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [posts, setPosts] = useState([]);
 
@@ -17,8 +17,8 @@ const PostsList = () => {
 
   return (
     <div>
-      {posts.map(({ title, body, owner }, index) => {
-        return <Post title={title} body={body} owner={owner} key={title + index} />;
+      {posts.map(({ id, title, body, owner }) => {
+        return <Post key={id} id={id} title={title} body={body} owner={owner} isLoggedIn={isLoggedIn} />;
       })}
     </div>
   );

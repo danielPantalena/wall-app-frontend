@@ -15,7 +15,7 @@ const Main = () => {
       <Header />
       <LoginContainer isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       {isLoggedIn && <PostForm />}
-      <PostsList />
+      <PostsList isLoggedIn={isLoggedIn} />
     </div>
   );
 };

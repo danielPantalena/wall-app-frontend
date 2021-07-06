@@ -11,9 +11,9 @@ export const createPost = (postData) => {
   wallAppApi.post('posts/', postData, headers);
 };
 
-export const updatePost = (postData) => {
+export const updatePost = (postData, postId) => {
   const headers = generateHeaders();
-  wallAppApi.put('posts/', postData, headers);
+  wallAppApi.put(`posts/${postId}`, postData, headers);
 };
 
 export const deletePost = (postId) => {
