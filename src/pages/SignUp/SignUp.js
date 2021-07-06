@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { createUser, getUserToken } from '../../helpers';
 import { Button } from '../../components';
+import './style.css';
 
 const SignUp = () => {
   const [userData, setUserData] = useState({ username: '', email: '', password: '' });
@@ -61,21 +62,21 @@ const SignUp = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="sign-up-form-container">
         <label>
-          Username:
+          <p>Username:</p>
           <input type="text" value={username} onChange={handleChange} name="username" required />
         </label>
         <label>
-          Email:
+          <p>Email:</p>
           <input type="email" value={email} onChange={handleChange} name="email" required />
         </label>
         <label>
-          Password:
+          <p>Password:</p>
           <input type="text" value={password} onChange={handleChange} name="password" required />
         </label>
         <label>
-          Confirm Password:
+          <p>Confirm Password:</p>
           <input
             type="text"
             value={passwordConfirmation}

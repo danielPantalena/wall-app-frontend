@@ -1,0 +1,18 @@
+form.sign-up-form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.sign-up-form-container label {
+  display: flex;
+  justify-content: center;
+}
+
+.sign-up-form-container p {
+  width: 200px;
+  margin: 10px 20px;
+}
+
+.sign-up-form-container input {
+  width: 400px;
+}

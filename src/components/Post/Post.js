@@ -20,8 +20,8 @@ const Post = (props) => {
 
   const { username } = sessionStorage;
   return (
-    <div>
-      <h3>{title}</h3>
+    <div className="post-container">
+      <h2>{title}</h2>
       <p>{body}</p>
       <p>{owner}</p>
       {isLoggedIn && username === owner && (
