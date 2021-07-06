@@ -1,3 +1,14 @@
 button {
-  background-color: red;
+  background-color: rgb(40, 162, 209);
+  color: rgb(23, 36, 36);
+  border-radius: 5px;
+  margin: 10px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:active {
+  scale: 0.8;
 }
