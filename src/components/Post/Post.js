@@ -5,7 +5,18 @@ import Button from '../Button/Button';
 import './style.css';
 
 const Post = (props) => {
-  const { id, title = 'Missing Title', body = 'Missing Body', owner, isLoggedIn = false } = props;
+  const {
+    id,
+    title = 'Missing Title',
+    body = 'Missing Body',
+    owner,
+    isLoggedIn = false,
+    setRefreshPosts,
+  } = props;
+
+  const handleDelete = () => {
+    deletePost(id).then(() => setRefreshPosts(id));
+  };
 
   const { username } = sessionStorage;
   return (
@@ -16,7 +27,7 @@ const Post = (props) => {
       {isLoggedIn && username === owner && (
         <div>
           <Link to={`/posts/${id}`}>Edit</Link>
-          <Button onClick={() => deletePost(id)} />
+          <Button onClick={handleDelete} />
         </div>
       )}
     </div>
