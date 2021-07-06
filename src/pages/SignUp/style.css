@@ -16,3 +16,7 @@ form.sign-up-form-container {
 .sign-up-form-container input {
   width: 400px;
 }
+
+.small-letters {
+  margin: 10px 20px 0px;
+}
