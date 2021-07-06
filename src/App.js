@@ -1,13 +1,12 @@
 import './App.css';
-import { Main, SignUp } from './pages';
+import Routes from './Routes';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Welcome to Wall App</h1>
-        <Main />
-        <SignUp />
+        <h1>Wall App</h1>
+        <Routes />
       </header>
     </div>
   );
