@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '../';
 import { getUserToken } from '../../helpers';
 
-const LoginContainer = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+const LoginContainer = ({ isLoggedIn, setIsLoggedIn }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [badCredentials, setBadCredentials] = useState(false);
@@ -31,7 +30,13 @@ const LoginContainer = () => {
     );
   };
 
-  if (isLoggedIn) return <Button onClick={handleLogout} text="Logout" />;
+  if (isLoggedIn)
+    return (
+      <div>
+        <p>Hello {sessionStorage.username} :)</p>
+        <Button onClick={handleLogout} text="Logout" />
+      </div>
+    );
 
   return (
     <div>

@@ -24,7 +24,7 @@ const PostForm = () => {
       </label>
       <label>
         body:
-        <input
+        <textarea
           type="text"
           value={body}
           onChange={({ target: { value } }) => setBody(value)}
