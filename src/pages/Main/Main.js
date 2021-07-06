@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Post, LoginContainer, PostForm } from '../../components';
+import { Post, Header } from '../../components';
 import wallAppApi from '../../services/api';
 
 const Main = () => {
@@ -7,11 +7,10 @@ const Main = () => {
 
   useEffect(() => {
     wallAppApi.get('posts/').then((response) => setPosts(response.data));
-    return () => {};
   }, []);
   return (
     <div>
-      {sessionStorage.userToken ? <PostForm /> : <LoginContainer />}
+      <Header />
       {posts.map(({ title, body, owner }, index) => {
         return <Post title={title} body={body} owner={owner} key={title + index} />;
       })}
