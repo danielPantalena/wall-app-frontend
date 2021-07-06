@@ -11,11 +11,13 @@ const Main = () => {
   }, []);
   return (
     <div>
+      {sessionStorage.username && <p>Hi {sessionStorage.username}</p>}
       <LoginContainer />
       {posts.length &&
         posts.map(({ title, body, owner }, index) => {
           return <Post title={title} body={body} owner={owner} key={title + index} />;
         })}
+        {sessionStorage.userToken && <p>{sessionStorage.userToken}</p>}
     </div>
   );
 };

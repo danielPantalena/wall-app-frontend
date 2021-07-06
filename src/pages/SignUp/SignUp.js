@@ -37,6 +37,7 @@ const SignUp = () => {
 
   const handleRedirection = () => {
     setIsLoading(true);
+    sessionStorage.username = username;
     getUserToken(username, password).then((response) => {
       sessionStorage.userToken = response.data.token;
       setIsLoading(false);
