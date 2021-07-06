@@ -7,9 +7,9 @@ const LoginContainer = () => {
     <div>
       <input type="text" />
       <input type="text" />
-      <Button text="Sign in" />
+      <Button text="Sign In" />
       <Link to="/signup">
-        <Button text="Sign up" />
+        <Button text="Sign Up" />
       </Link>
     </div>
   );
