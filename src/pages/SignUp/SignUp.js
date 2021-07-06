@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import wallAppApi from '../../services/api';
+import { Button } from '../../components';
 
 const SignUp = () => {
   const [userData, setUserData] = useState({ username: '', email: '', password: '' });
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
+  const [isPasswordConfirmed, setIsPasswordConfirmed] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isUserCreated, setIsUserCreated] = useState(false);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
   const { username, email, password } = userData;
 
   const handleChange = ({ target: { name, value } }) => {
@@ -11,20 +17,40 @@ const SignUp = () => {
     return setUserData(newUserData);
   };
 
-  const validatePassword = () => password === passwordConfirmation;
+  const handlePasswordConfirmationChange = ({ target: { value } }) => {
+    setPasswordConfirmation(value);
+    return setIsPasswordConfirmed(true);
+  };
 
   const createUser = (requestData) => wallAppApi.post('users/', requestData);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    return (
-      validatePassword() &&
-      createUser(userData).then(
-        (response) => console.log(response.data),
-        (err) => console.log('Err', err.message),
-      )
+    if (passwordConfirmation !== password) return setIsPasswordConfirmed(false);
+    setIsLoading(true);
+    return createUser(userData).then(
+      (response) => {
+        console.log(response.data);
+        setIsLoading(false);
+        setIsUserCreated(true);
+      },
+      (err) => console.error('Error:', err.message),
     );
   };
+
+  if (shouldRedirect) return <Redirect to="/" />;
+
+  if (isLoading) return <div>Loading...</div>;
+
+  if (isUserCreated)
+    return (
+      <div>
+        <p>
+          Congratulation! Your user <strong>{username}</strong> was created :D
+        </p>
+        <Button onClick={() => setShouldRedirect(true)} text="Go to the wall" />
+      </div>
+    );
 
   return (
     <div>
@@ -35,7 +61,7 @@ const SignUp = () => {
         </label>
         <label>
           Email:
-          <input type="text" value={email} onChange={handleChange} name="email" required />
+          <input type="email" value={email} onChange={handleChange} name="email" required />
         </label>
         <label>
           Password:
@@ -46,10 +72,11 @@ const SignUp = () => {
           <input
             type="text"
             value={passwordConfirmation}
-            onChange={({ target: { value } }) => setPasswordConfirmation(value)}
+            onChange={handlePasswordConfirmationChange}
             name="password-confirmation"
             required
           />
+          {!isPasswordConfirmed && <span>The passwords are different</span>}
         </label>
         <input type="submit" value="Register" />
       </form>
