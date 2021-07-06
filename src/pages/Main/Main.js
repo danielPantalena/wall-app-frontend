@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Header, PostsList, PostForm, LoginContainer } from '../../components';
-import wallAppApi from '../../services/api';
+import { getAllPosts } from '../../helpers';
 
 const Main = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    wallAppApi.get('posts/').then((response) => setPosts(response.data));
-  }, []);
+  const [isLoggedIn, setIsLoggedIn] = useState(!!sessionStorage.userToken);
 
   return (
     <div>
