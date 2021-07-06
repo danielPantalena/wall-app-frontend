@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import wallAppApi from '../../services/api';
+import { createUser, getUserToken } from '../../helpers';
 import { Button } from '../../components';
 
 const SignUp = () => {
@@ -22,20 +22,26 @@ const SignUp = () => {
     return setIsPasswordConfirmed(true);
   };
 
-  const createUser = (requestData) => wallAppApi.post('users/', requestData);
-
   const handleSubmit = (event) => {
     event.preventDefault();
     if (passwordConfirmation !== password) return setIsPasswordConfirmed(false);
     setIsLoading(true);
     return createUser(userData).then(
       (response) => {
-        console.log(response.data);
+        if (response.status === 201) setIsUserCreated(true);
         setIsLoading(false);
-        setIsUserCreated(true);
       },
       (err) => console.error('Error:', err.message),
     );
+  };
+
+  const handleRedirection = () => {
+    setIsLoading(true);
+    getUserToken(username, password).then((response) => {
+      sessionStorage.userToken = response.data.token;
+      setIsLoading(false);
+      setShouldRedirect(true);
+    });
   };
 
   if (shouldRedirect) return <Redirect to="/" />;
@@ -48,7 +54,7 @@ const SignUp = () => {
         <p>
           Congratulation! Your user <strong>{username}</strong> was created :D
         </p>
-        <Button onClick={() => setShouldRedirect(true)} text="Go to the wall" />
+        <Button onClick={handleRedirection} text="Go to the wall" />
       </div>
     );
 
