@@ -24,7 +24,7 @@ const PostDetail = () => {
         () => setNotFound(true),
       )
       .then(() => setIsLoading(false));
-  }, []);
+  }, [id]);
 
   const handleChange = ({ target: { value, name } }) => {
     setNewPostData({ ...postData, [name]: value });

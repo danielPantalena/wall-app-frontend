@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Header, PostsList, PostForm, LoginContainer } from '../../components';
-import { getAllPosts } from '../../helpers';
 
 const Main = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(!!sessionStorage.userToken);
