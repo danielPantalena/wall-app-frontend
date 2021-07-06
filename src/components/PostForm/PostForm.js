@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Button from '../Button/Button';
+import { createPost } from '../../helpers';
 
 const PostForm = () => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
 
   const handleSubmit = () => {
-    
+    createPost({ title, body });
   };
 
   return (
