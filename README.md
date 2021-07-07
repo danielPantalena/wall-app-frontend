@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Setup
 
-For the project to run as desired, its backend must be running. [Wall App Backend](https://github.com/danielPantalena/wall-app-backend)
+For the project to run as desired, its backend must be running at `http://127.0.0.1:8000/`. [Wall App Backend](https://github.com/danielPantalena/wall-app-backend)
 
 First, clone the repo and change to the created directory:
 
