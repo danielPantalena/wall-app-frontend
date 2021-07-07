@@ -1,0 +1,8 @@
+div.posts-container {
+  min-height: 100vh;
+  padding: 5% 2%;
+}
+
+.posts-container > p {
+  font-size: 2em;
+}
