@@ -100,10 +100,10 @@ const SignUp = () => {
             name="password-confirmation"
             required
           />
-          {!isPasswordConfirmed && <span>The passwords are different</span>}
         </label>
         <input type="submit" value="Register" className="submit-button" />
       </form>
+      {!isPasswordConfirmed && <span>The passwords are different</span>}
       {errorMessage && <p>{errorMessage}</p>}
     </div>
   );
