@@ -34,7 +34,7 @@ const PostForm = () => {
           required
         />
       </label>
-      <input type="submit" value="Create Post" className="button-submit-post-form"/>
+      <input type="submit" value="Create Post" className="submit-button"/>
     </form>
   );
 };

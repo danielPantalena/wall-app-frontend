@@ -7,7 +7,24 @@
   color: #61dafb;
 }
 
+.container {
+  min-height: 100vh;
+  padding: 2% 4%;
+}
+
 input {
   border-radius: 5px;
   margin: 5px 15px 5px 5px;
+}
+
+.submit-button {
+  width: 120px;
+  margin: 0 auto;
+  background-color: rgb(12, 33, 33);
+  color: rgba(0, 247, 255, 0.719);
+  margin-top: 10px;
+}
+
+.submit-button:hover {
+  cursor: pointer;
 }

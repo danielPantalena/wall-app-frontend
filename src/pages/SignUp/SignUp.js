@@ -11,6 +11,7 @@ const SignUp = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isUserCreated, setIsUserCreated] = useState(false);
   const [shouldRedirect, setShouldRedirect] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const { username, email, password } = userData;
 
   const handleChange = ({ target: { name, value } }) => {
@@ -27,13 +28,22 @@ const SignUp = () => {
     event.preventDefault();
     if (passwordConfirmation !== password) return setIsPasswordConfirmed(false);
     setIsLoading(true);
-    return createUser(userData).then(
-      (response) => {
-        if (response.status === 201) setIsUserCreated(true);
-        setIsLoading(false);
-      },
-      (err) => console.error('Error:', err.message),
-    );
+    return createUser(userData)
+      .then(
+        (response) => {
+          console.log(response);
+          if (response.status === 201) setIsUserCreated(true);
+        },
+        (err) => {
+          if (err.response.data.Error) {
+            const errorMessage = err.response.data.message;
+            setErrorMessage(errorMessage);
+          } else {
+            setErrorMessage('Opss... something went wrong :/');
+          }
+        },
+      )
+      .then(() => setIsLoading(false));
   };
 
   const handleRedirection = () => {
@@ -61,7 +71,8 @@ const SignUp = () => {
     );
 
   return (
-    <div>
+    <div className="container">
+      <h2>Register your account</h2>
       <form onSubmit={handleSubmit} className="sign-up-form-container">
         <label>
           <p>Username:</p>
@@ -86,8 +97,9 @@ const SignUp = () => {
           />
           {!isPasswordConfirmed && <span>The passwords are different</span>}
         </label>
-        <input type="submit" value="Register" />
+        <input type="submit" value="Register" className="submit-button" />
       </form>
+      {errorMessage && <p>{errorMessage}</p>}
     </div>
   );
 };

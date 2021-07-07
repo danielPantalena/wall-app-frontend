@@ -13,10 +13,11 @@ form.sign-up-form-container {
   margin: 10px 20px;
 }
 
-.sign-up-form-container input {
+.sign-up-form-container label input {
   width: 400px;
 }
 
 .small-letters {
   margin: 10px 20px 0px;
 }
+

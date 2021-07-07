@@ -29,14 +29,3 @@ form.post-form-container {
   border-style: inset;
   border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
 }
-
-.button-submit-post-form {
-  width: 120px;
-  margin: 0 auto;
-  background-color: rgb(12, 33, 33);
-  color: rgba(0, 247, 255, 0.719);
-}
-
-.button-submit-post-form:hover {
-  cursor: pointer;
-} 
