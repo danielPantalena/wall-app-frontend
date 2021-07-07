@@ -54,7 +54,7 @@ const SignUp = () => {
     return (
       <div>
         <p>
-          Congratulation! Your user <strong>{username}</strong> was created :D
+          Congratulations! Your user <strong>{username}</strong> was created :D
         </p>
         <Button onClick={handleRedirection} text="Go to the wall" />
       </div>

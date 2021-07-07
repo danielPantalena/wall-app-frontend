@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { createPost } from '../../helpers';
+import './style.css';
 
 const PostForm = () => {
   const [title, setTitle] = useState('');
@@ -10,9 +11,10 @@ const PostForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="post-form-container">
+      <h3>Create a Post</h3>
       <label>
-        Title:
+        <p>Title:</p>
         <input
           type="text"
           value={title}
@@ -23,7 +25,7 @@ const PostForm = () => {
         />
       </label>
       <label>
-        body:
+        <p>Body:</p>
         <textarea
           type="text"
           value={body}
@@ -32,7 +34,7 @@ const PostForm = () => {
           required
         />
       </label>
-      <input type="submit" value="Create Post" />
+      <input type="submit" value="Create Post" className="button-submit-post-form"/>
     </form>
   );
 };

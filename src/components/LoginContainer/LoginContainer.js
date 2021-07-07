@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../';
 import { getUserToken } from '../../helpers';
+import './style.css';
 
 const LoginContainer = ({ isLoggedIn, setIsLoggedIn }) => {
   const [username, setUsername] = useState('');
@@ -40,31 +41,33 @@ const LoginContainer = ({ isLoggedIn, setIsLoggedIn }) => {
 
   return (
     <div>
-      <label>
-        username:
-        <input
-          type="text"
-          onChange={({ target: { value } }) => {
-            setBadCredentials(false);
-            setUsername(value);
-          }}
-        />
-      </label>
-      <label>
-        password:
-        <input
-          type="text"
-          onChange={({ target: { value } }) => {
-            setBadCredentials(false);
-            setPassword(value);
-          }}
-        />
-      </label>
-      <Button text="Sign In" onClick={handleLogin} />
-      {badCredentials && <span>Bad credentials</span>}
-      <Link to="/signup">
-        <Button text="Sign Up" />
-      </Link>
+      <div>
+        <label>
+          username:
+          <input
+            type="text"
+            onChange={({ target: { value } }) => {
+              setBadCredentials(false);
+              setUsername(value);
+            }}
+          />
+        </label>
+        <label>
+          password:
+          <input
+            type="password"
+            onChange={({ target: { value } }) => {
+              setBadCredentials(false);
+              setPassword(value);
+            }}
+          />
+        </label>
+        <Button text="Sign In" onClick={handleLogin} />
+        <Link to="/signup">
+          <Button text="Sign Up" />
+        </Link>
+      </div>
+      {badCredentials && <span className="bad-credentials">BAD CREDENTIALS</span>}
     </div>
   );
 };
