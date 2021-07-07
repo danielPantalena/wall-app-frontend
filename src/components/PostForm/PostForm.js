@@ -11,7 +11,7 @@ const PostForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="post-form-container">
+    <form onSubmit={handleSubmit} className="post-form-container flex-column">
       <h3>Create a Post</h3>
       <label>
         <p>Title:</p>

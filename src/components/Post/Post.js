@@ -20,7 +20,7 @@ const Post = (props) => {
 
   const { username } = sessionStorage;
   return (
-    <div className="post-container">
+    <div className="post-container flex-column">
       <p className="small-letters">Owner: {owner}</p>
       <h2>{title}</h2>
       <p>{body}</p>

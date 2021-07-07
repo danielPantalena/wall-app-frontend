@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { NotFound } from '../';
-import { Button } from '../../components';
 import { getPostById, updatePost } from '../../helpers';
 
 const PostDetail = () => {
@@ -30,7 +29,8 @@ const PostDetail = () => {
     setNewPostData({ ...postData, [name]: value });
   };
 
-  const handleUpdate = () => {
+  const handleUpdate = (event) => {
+    event.preventDefault();
     updatePost(newPostData, id).then(
       () => history.push('/'),
       (err) => console.error(err.message),
@@ -42,16 +42,18 @@ const PostDetail = () => {
   if (notFound) return <NotFound />;
 
   return (
-    <div>
-      <label>
-        Title:
-        <input type="text" value={newPostData.title} name="title" onChange={handleChange} />
-      </label>
-      <label>
-        Body:
-        <input type="text" value={newPostData.body} name="body" onChange={handleChange} />
-      </label>
-      <Button onClick={() => handleUpdate()} text="Update Post" />
+    <div className="container">
+      <form className="flex-column" onSubmit={handleUpdate}>
+        <label>
+          <p>Title:</p>
+          <input type="text" value={newPostData.title} name="title" onChange={handleChange} />
+        </label>
+        <label>
+          <p>Body:</p>
+          <textarea type="text" value={newPostData.body} name="body" onChange={handleChange} />
+        </label>
+        <input type="submit" value="Update" className="submit-button" />
+      </form>
     </div>
   );
 };

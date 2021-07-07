@@ -1,8 +1,3 @@
-form.sign-up-form-container {
-  display: flex;
-  flex-direction: column;
-}
-
 .sign-up-form-container label {
   display: flex;
   justify-content: center;
@@ -20,4 +15,3 @@ form.sign-up-form-container {
 .small-letters {
   margin: 10px 20px 0px;
 }
-

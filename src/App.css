@@ -12,10 +12,26 @@
   padding: 2% 4%;
 }
 
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
 input {
   border-radius: 5px;
   margin: 5px 15px 5px 5px;
 }
+
+textarea {
+  flex-grow: 1;
+  border-radius: 5px;
+  height: 80px;
+  margin: 5px 15px 5px 5px;
+  border-width: 2px;
+  border-style: inset;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+}
+
 
 .submit-button {
   width: 120px;
@@ -28,3 +44,21 @@ input {
 .submit-button:hover {
   cursor: pointer;
 }
+
+form label {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 80vw;
+  padding: 0% 2%;
+}
+
+form label input {
+  flex-grow: 1;
+}
+
+label p {
+  width: 200px;
+}
+
+

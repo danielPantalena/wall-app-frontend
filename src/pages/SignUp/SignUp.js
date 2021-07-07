@@ -58,22 +58,27 @@ const SignUp = () => {
 
   if (shouldRedirect) return <Redirect to="/" />;
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div className="container">Loading...</div>;
 
   if (isUserCreated)
     return (
-      <div>
+      <div className="container">
         <p>
           Congratulations! Your user <strong>{username}</strong> was created :D
         </p>
-        <Button onClick={handleRedirection} text="Go to the wall" />
+        <Button
+          onClick={handleRedirection}
+          text="Go to the wall"
+          backgroundColor="rgb(12, 33, 33)"
+          color="rgb(40, 162, 209)"
+        />
       </div>
     );
 
   return (
     <div className="container">
       <h2>Register your account</h2>
-      <form onSubmit={handleSubmit} className="sign-up-form-container">
+      <form onSubmit={handleSubmit} className="flex-column">
         <label>
           <p>Username:</p>
           <input type="text" value={username} onChange={handleChange} name="username" required />

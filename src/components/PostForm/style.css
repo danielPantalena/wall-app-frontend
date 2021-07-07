@@ -1,6 +1,4 @@
 form.post-form-container {
-  display: flex;
-  flex-direction: column;
   padding: 2% 6%;
 }
 
@@ -18,14 +16,4 @@ form.post-form-container {
 
 .post-form-container input {
   flex-grow: 1;
-}
-
-.post-form-container textarea {
-  flex-grow: 1;
-  border-radius: 5px;
-  height: 80px;
-  margin: 5px 15px 5px 5px;
-  border-width: 2px;
-  border-style: inset;
-  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
 }
